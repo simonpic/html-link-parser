@@ -30,8 +30,8 @@ func TestParseHtmlDocWithTwoLinksWithNestedNode(t *testing.T) {
 	actuals := ParseHtmlDoc(doc)
 
 	expected := []Link{
-		{Href: "https://www.twitter.com/joncalhoun", Text: "\n          Check me out on twitter\n          \n        "},
-		{Href: "https://github.com/gophercises", Text: "\n          Gophercises is on Github!\n        "},
+		{Href: "https://www.twitter.com/joncalhoun", Text: "Check me out on twitter"},
+		{Href: "https://github.com/gophercises", Text: "Gophercises is on Github !"},
 	}
 
 	assertLinks(t, expected, actuals)
@@ -46,7 +46,7 @@ func TestParseHtmlDocEx3(t *testing.T) {
 	actuals := ParseHtmlDoc(doc)
 
 	expected := []Link{
-		{Href: "#", Text: "Login "},
+		{Href: "#", Text: "Login"},
 		{Href: "/lost", Text: "Lost? Need help?"},
 		{Href: "https://twitter.com/marcusolsson", Text: "@marcusolsson"},
 	}
@@ -63,7 +63,7 @@ func TestParseHtmlDocEx4(t *testing.T) {
 	actuals := ParseHtmlDoc(doc)
 
 	expected := []Link{
-		{Href: "/dog-cat", Text: "dog cat "},
+		{Href: "/dog-cat", Text: "dog cat"},
 	}
 
 	assertLinks(t, expected, actuals)

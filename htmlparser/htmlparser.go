@@ -50,8 +50,7 @@ func ParseLinkLNode(n *html.Node) Link {
 		}
 	}
 
-	var sb strings.Builder
-
+	var fields []string
 	//Extract link text
 	var f func(node *html.Node)
 	f = func(node *html.Node) {
@@ -60,7 +59,7 @@ func ParseLinkLNode(n *html.Node) Link {
 		}
 
 		if node.Type == html.TextNode {
-			sb.WriteString(node.Data)
+			fields = append(fields, strings.Fields(node.Data)...)
 		}
 
 		f(node.FirstChild)
@@ -71,7 +70,7 @@ func ParseLinkLNode(n *html.Node) Link {
 
 	return Link{
 		Href: href,
-		Text: sb.String(),
+		Text: strings.Join(fields, " "),
 	}
 
 }
